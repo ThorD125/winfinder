@@ -1,0 +1,11 @@
+C:\Users\thord\source\repos\explorerrrrrappp\explorerrrrrappp\bin\Debug\explorerrrrrappp.exe.config
+C:\Users\thord\source\repos\explorerrrrrappp\explorerrrrrappp\bin\Debug\explorerrrrrappp.exe
+C:\Users\thord\source\repos\explorerrrrrappp\explorerrrrrappp\bin\Debug\explorerrrrrappp.pdb
+C:\Users\thord\source\repos\explorerrrrrappp\explorerrrrrappp\obj\Debug\explorerrrrrappp.csproj.AssemblyReference.cache
+C:\Users\thord\source\repos\explorerrrrrappp\explorerrrrrappp\obj\Debug\explorerrrrrappp.csproj.SuggestedBindingRedirects.cache
+C:\Users\thord\source\repos\explorerrrrrappp\explorerrrrrappp\obj\Debug\explorerrrrrappp.Form1.resources
+C:\Users\thord\source\repos\explorerrrrrappp\explorerrrrrappp\obj\Debug\explorerrrrrappp.Properties.Resources.resources
+C:\Users\thord\source\repos\explorerrrrrappp\explorerrrrrappp\obj\Debug\explorerrrrrappp.csproj.GenerateResource.cache
+C:\Users\thord\source\repos\explorerrrrrappp\explorerrrrrappp\obj\Debug\explorerrrrrappp.csproj.CoreCompileInputs.cache
+C:\Users\thord\source\repos\explorerrrrrappp\explorerrrrrappp\obj\Debug\explorerrrrrappp.exe
+C:\Users\thord\source\repos\explorerrrrrappp\explorerrrrrappp\obj\Debug\explorerrrrrappp.pdb
