@@ -16,7 +16,6 @@ namespace explorerrrrrappp
         {
             InitializeComponent();
             Location.Text = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            Folder.Url = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
 
         }
 
@@ -28,8 +27,32 @@ namespace explorerrrrrappp
 
         private void OpenFolder_Click(object sender, EventArgs e)
         {
+            newGroup();
+        }
 
-            Folder.Url = new Uri(Location.Text);
+        private void newGroup()
+        {
+
+            Explorer.Controls.Clear();
+            string[] Locations = Location.Text.Split('\\');
+            string result = "";
+            foreach (string location in Locations)
+            {
+                result += location + '\\';
+                newColumn(new Uri(result));
+            }
+        }
+
+
+
+        private void newColumn(Uri NewLocation)
+        {
+            WebBrowser newWindow = new WebBrowser();
+            newWindow.Url = NewLocation;
+            Explorer.Controls.Add(newWindow);
+
+
+            System.Console.WriteLine(NewLocation.ToString());
         }
     }
 }
