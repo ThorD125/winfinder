@@ -17,42 +17,72 @@ namespace explorerrrrrappp
             InitializeComponent();
             Location.Text = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 
+            LoadCss();
         }
 
+        private void LoadCss()
+        {
+            Location.BackColor = Color.Red;
 
-        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        }
+
+        private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             
         }
 
         private void OpenFolder_Click(object sender, EventArgs e)
         {
-            newGroup();
+            NewGroup();
         }
 
-        private void newGroup()
+        private void NewGroup()
         {
+            ClearGroup();
+            Log(Location.Text);
 
-            Explorer.Controls.Clear();
+
             string[] Locations = Location.Text.Split('\\');
             string result = "";
             foreach (string location in Locations)
             {
                 result += location + '\\';
-                newColumn(new Uri(result));
+                NewColumn(new Uri(result));
             }
         }
 
 
+        private void ClearGroup()
+        {
+            Explorer.Controls.Clear();
+        }
 
-        private void newColumn(Uri NewLocation)
+        int locationLeft = 0;
+
+        private void NewColumn(Uri NewLocation)
         {
             WebBrowser newWindow = new WebBrowser();
             newWindow.Url = NewLocation;
+
+
+
+            newWindow.Width = 200;
+            newWindow.Height = 400;// percentage
+            newWindow.Left = locationLeft;
+
             Explorer.Controls.Add(newWindow);
+            locationLeft += 200;
 
+            Log(newWindow.Left);
 
-            System.Console.WriteLine(NewLocation.ToString());
+            Log(NewLocation);
+            Log(locationLeft);
+
+        }
+
+        private void Log(object message)
+        {
+            System.Console.WriteLine(message.ToString());
         }
     }
 }

@@ -53,6 +53,8 @@
             // 
             // Explorer
             // 
+            this.Explorer.AccessibleName = "";
+            this.Explorer.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.Explorer.Location = new System.Drawing.Point(13, 57);
             this.Explorer.Name = "Explorer";
             this.Explorer.Size = new System.Drawing.Size(775, 381);
