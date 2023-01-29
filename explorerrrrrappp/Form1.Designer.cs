@@ -31,6 +31,7 @@
             this.OpenFolder = new System.Windows.Forms.Button();
             this.Location = new System.Windows.Forms.TextBox();
             this.Folder = new System.Windows.Forms.WebBrowser();
+            this.Explorer = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // OpenFolder
@@ -53,11 +54,19 @@
             // 
             // Folder
             // 
-            this.Folder.Location = new System.Drawing.Point(80, 115);
+            this.Folder.Location = new System.Drawing.Point(267, 126);
             this.Folder.MinimumSize = new System.Drawing.Size(20, 20);
             this.Folder.Name = "Folder";
             this.Folder.Size = new System.Drawing.Size(515, 244);
             this.Folder.TabIndex = 2;
+            // 
+            // Explorer
+            // 
+            this.Explorer.Location = new System.Drawing.Point(13, 57);
+            this.Explorer.Name = "Explorer";
+            this.Explorer.Size = new System.Drawing.Size(248, 239);
+            this.Explorer.TabIndex = 3;
+            this.Explorer.TabStop = false;
             // 
             // Form1
             // 
@@ -67,6 +76,7 @@
             this.Controls.Add(this.Folder);
             this.Controls.Add(this.Location);
             this.Controls.Add(this.OpenFolder);
+            this.Controls.Add(this.Explorer);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -79,6 +89,7 @@
         private System.Windows.Forms.Button OpenFolder;
         private System.Windows.Forms.TextBox Location;
         private System.Windows.Forms.WebBrowser Folder;
+        private System.Windows.Forms.GroupBox Explorer;
     }
 }
 

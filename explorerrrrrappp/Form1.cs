@@ -15,22 +15,21 @@ namespace explorerrrrrappp
         public Form1()
         {
             InitializeComponent();
+            Location.Text = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            Folder.Url = new Uri(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile));
+
         }
+
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-
+            
         }
 
         private void OpenFolder_Click(object sender, EventArgs e)
         {
-            using(FolderBrowserDialog fbd = new FolderBrowserDialog() { Description="Select path" })
-            {
-                if (fbd.ShowDialog() == DialogResult.OK) { 
-                    Folder.Url = new Uri(fbd.SelectedPath);
-                    Location.Text = fbd.SelectedPath;
-                }
-            }
+
+            Folder.Url = new Uri(Location.Text);
         }
     }
 }
