@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            HorizontalOptions="Center">
+            
+            <Entry
+                Text="inputbox Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)" 
+                class="inputBox" 
+                StyleClass="inputBox"
+                x:Name="inputBox"/>
+            <Button 
+                Text="Search"
+                Clicked="showListview" />
+
+
+            <ListView>
+                
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
