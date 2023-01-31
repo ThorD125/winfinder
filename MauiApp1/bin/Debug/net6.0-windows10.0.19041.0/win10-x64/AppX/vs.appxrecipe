@@ -18,7 +18,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\thord\source\repos\MauiApp1\MauiApp1\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AppX</LayoutDir>
-    <RegisteredManifestChecksum>50BE62763D3A57CD8D95F2F1B624FB0782469403BAF3AC3338BC5F5654C0A785</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>C31F4C0190B374C2033975361725383B3BBBC177DB2A5ABF3C00C501CDB41726</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>471fec4b-1032-4267-b58f-202f48555579_1.0.0.1_x64__9zz4h110yvjzm</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>471fec4b-1032-4267-b58f-202f48555579_9zz4h110yvjzm!App</RegisteredUserModeAppID>
     <RegisteredPackageID>471fec4b-1032-4267-b58f-202f48555579</RegisteredPackageID>
@@ -29,25 +29,25 @@
     <AppXManifest Include="C:\Users\thord\source\repos\MauiApp1\MauiApp1\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-01-30T13:26:41.791</Modified>
+      <Modified>2023-01-31T16:33:10.405</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\thord\source\repos\MauiApp1\MauiApp1\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-01-30T13:26:41.481</Modified>
+      <Modified>2023-01-31T16:33:10.143</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thord\source\repos\MauiApp1\MauiApp1\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\MauiApp1.runtimeconfig.json">
       <PackagePath>MauiApp1.runtimeconfig.json</PackagePath>
-      <Modified>2023-01-30T12:52:12.443</Modified>
+      <Modified>2023-01-31T15:51:28.112</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thord\source\repos\MauiApp1\MauiApp1\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\MauiApp1.dll">
       <PackagePath>MauiApp1.dll</PackagePath>
-      <Modified>2023-01-30T13:26:40.904</Modified>
+      <Modified>2023-01-31T16:33:09.571</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thord\source\repos\MauiApp1\MauiApp1\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>MauiApp1.exe</PackagePath>
-      <Modified>2023-01-30T13:26:40.910</Modified>
+      <Modified>2023-01-31T16:33:09.577</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thord\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.11\runtimes\win-x64\lib\net6.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -1063,7 +1063,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thord\source\repos\MauiApp1\MauiApp1\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\MauiApp1.deps.json">
       <PackagePath>MauiApp1.deps.json</PackagePath>
-      <Modified>2023-01-30T13:26:41.648</Modified>
+      <Modified>2023-01-31T16:33:10.318</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\thord\.nuget\packages\microsoft.maui.controls.ref.win\6.0.547\ref\net6.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

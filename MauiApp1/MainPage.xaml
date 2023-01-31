@@ -4,24 +4,21 @@
              x:Class="MauiApp1.MainPage">
 
     <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            HorizontalOptions="Center">
-            
-            <Entry
-                Text="inputbox Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)" 
-                class="inputBox" 
-                StyleClass="inputBox"
-                x:Name="inputBox"/>
-            <Button 
-                Text="Search"
-                Clicked="showListview" />
+        <VerticalStackLayout x:Name="body">
+            <HorizontalStackLayout x:Name="divSearch">
+                <Entry
+                    Text="inputbox Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)" 
+                    x:Name="inputBox"/>
+                <Button 
+                    Text="Search"
+                    Clicked="showListview" />   
+            </HorizontalStackLayout>
 
+            <HorizontalStackLayout 
+                x:Name="divLists"
+                BackgroundColor="Purple"
+                VerticalOptions="Fill"></HorizontalStackLayout>
 
-            <ListView>
-                
-            </ListView>
         </VerticalStackLayout>
     </ScrollView>
 
