@@ -33,8 +33,9 @@ public partial class MainPage : ContentPage
 
     public void resetlocation(object sender, EventArgs args) {
         Log("sefesfesfesf");
-        Button newsender = (Button) sender;
-        inputBox.Text = newsender.Text;
+        TestButton newsender = (TestButton) sender;
+        inputBox.Text = newsender.defaultlocation + newsender.Text;
+        
     }
 
     private void addItems(VerticalStackLayout listView, string defaultlocation, string[] items, string filetype)
@@ -50,10 +51,9 @@ public partial class MainPage : ContentPage
 
 
 
-            Button item = new Button();
             string newItemName = itemName.Remove(0, defaultlocation.Length);
-            item.Text = newItemName;
-
+            TestButton item = new TestButton(newItemName, defaultlocation);
+            // item.Text = newItemName;
 
             item.Clicked += resetlocation;
 
