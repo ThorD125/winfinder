@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Microsoft.Maui.Devices.Sensors;
 
 namespace MauiApp1;
@@ -30,30 +31,61 @@ public partial class MainPage : ContentPage
 
     }
 
+    public void resetlocation(object sender, EventArgs args) {
+        Log("sefesfesfesf");
+        Button newsender = (Button) sender;
+        inputBox.Text = newsender.Text;
+    }
+
+    private void addItems(VerticalStackLayout listView, string defaultlocation, string[] items, string filetype)
+    {
+        Log("start" + items);
+        
+        double widthCollumn = 0;
+        double count = 0;
+
+        foreach (string itemName in items)
+        {
+            HorizontalStackLayout div = new HorizontalStackLayout();
+
+
+
+            Button item = new Button();
+            string newItemName = itemName.Remove(0, defaultlocation.Length);
+            item.Text = newItemName;
+
+
+            item.Clicked += resetlocation;
+
+            
+            //TODO change to img
+            Label image = new Label();
+            image.Text = filetype;
+
+            widthCollumn += newItemName.Length*10;
+            count++;
+
+            div.Add(image);
+            div.Add(item);
+            listView.Add(div);
+
+        }
+
+        double result = (widthCollumn / count)*1.1;
+        listView.WidthRequest = result;
+    }
     private void NewColumn(string NewLocation)
     {
         Log(NewLocation);
 
-
+        VerticalStackLayout listView = new VerticalStackLayout();
         
+        addItems(listView, NewLocation, Directory.GetDirectories(NewLocation), "d");
+        addItems(listView, NewLocation, Directory.GetFiles(NewLocation), "f");
 
-        //string[] folders = Directory.GetDirectories(NewLocation);
-        ////foreach (string folder in folders)
-        ////{
-        ////    explorerTable.Items.Add(new ListViewItem(new FileInfo(folder).Name));
-        ////}
-
-        //string[] files = Directory.GetFiles(NewLocation);
-        ////foreach (string file in files)
-        ////{
-        ////    explorerTable.Items.Add(new ListViewItem(new FileInfo(file).Name));
-        ////}
-
+        divLists.Add(listView);
         //String[] foldersandfiles = folders.Union(files).ToArray();
 
-        ListView listView = new ListView();
-        listView.SetBinding(ItemsView.ItemsSourceProperty, "foldersandfiles");
-        divLists.Add(listView);
     }
 
 
@@ -75,61 +107,3 @@ public partial class MainPage : ContentPage
         }
     }
 }
-
-
-
-/*OLDOCDER
- * public Form1()
-        {
-            InitializeComponent();
-            Location.Text = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            NewGroup();
-            LoadCss();
-
-            using (var reader = new StringReader("^contentpage { background-color: blue; }"))
-            {
-                this.Resources.Add(StyleSheet.FromReader(reader));
-            }
-        }
-
-        private void LoadCss()
-        {
-            //Location.BackColor = Color.Red;
-
-
-
-            Log("Styles");
-
-        }
-
-        private void OpenFolder_Click(object sender, EventArgs e)
-        {
-            NewGroup();
-        }
-
-        int locationLeft = 0;
-
-        private void NewGroup()
-        {
-            ClearGroup();
-            Log(Location.Text);
-
-
-            string[] Locations = Location.Text.Split('\\');
-            string result = "";
-
-            ListView listview = new ListView();
-
-            foreach (string location in Locations)
-            {
-                result += location + '\\';
-                NewColumn(listview, result);
-            }
-        }
-
-
-        
-
-        
-
-        */

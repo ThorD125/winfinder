@@ -16,7 +16,6 @@
 
             <HorizontalStackLayout 
                 x:Name="divLists"
-                BackgroundColor="Purple"
                 VerticalOptions="Fill"></HorizontalStackLayout>
 
         </VerticalStackLayout>
