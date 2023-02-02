@@ -1,25 +1,33 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls.Shapes;
 using Microsoft.Maui.Devices.Sensors;
+using Microsoft.Maui.Graphics.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MauiApp1;
 
 public partial class MainPage : ContentPage
 {
-    readonly String defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+    readonly string defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+    private settings settings = new settings();
 
     public MainPage()
 	{
 		InitializeComponent();
         inputBox.Text = defaultPath;
+        LoadGroup();
     }
-
-    void showListview(object sender, EventArgs args)
+    public void showListview(object sender, EventArgs args)
     {
         ClearGroup();
+        LoadGroup();
+    }
 
 
-
+    public void LoadGroup()
+    {
         string[] Locations = inputBox.Text.Split('\\');
         string result = "";
 
@@ -28,49 +36,79 @@ public partial class MainPage : ContentPage
             result += location + '\\';
             NewColumn(result);
         }
-
+    }
+    public void showListViewForPath(object sender, EventArgs args)
+    {
+        mybottton newsender = (mybottton)sender;
+        inputBox.Text = newsender.defaultPath + newsender.Text;
+        ClearGroup();
+        LoadGroup();
+    }
+    public void showFile(object sender, EventArgs args)
+    {
+        Log("showListViewForPath");
+        mybottton newsender = (mybottton)sender;
+        inputBox.Text = newsender.defaultPath + newsender.Text;
+        ClearGroup();
+        LoadGroup();
     }
 
-    public void resetlocation(object sender, EventArgs args) {
-        Log("sefesfesfesf");
-        TestButton newsender = (TestButton) sender;
-        inputBox.Text = newsender.defaultlocation + newsender.Text;
-        
+    private void doFolderStuff(mybottton item)
+    {
+        item.Clicked += showListViewForPath;
     }
 
+    private void doFileStuff(mybottton item)
+    {
+        item.Clicked += showFile;
+    }
     private void addItems(VerticalStackLayout listView, string defaultlocation, string[] items, string filetype)
     {
-        Log("start" + items);
-        
         double widthCollumn = 0;
         double count = 0;
 
         foreach (string itemName in items)
         {
-            HorizontalStackLayout div = new HorizontalStackLayout();
+                string newItemName = itemName.Remove(0, defaultlocation.Length);
 
 
 
-            string newItemName = itemName.Remove(0, defaultlocation.Length);
-            TestButton item = new TestButton(newItemName, defaultlocation);
-            // item.Text = newItemName;
+            if (
+                (!newItemName.StartsWith(".") || (newItemName.StartsWith(".") && settings.viewHiddenFiles)) &&
+                    (!newItemName.StartsWith("$") /*|| (newItemName.StartsWith("$") && settings.viewHiddenFiles)*/)
+                    )
+            {
+                HorizontalStackLayout div = new HorizontalStackLayout();
 
-            item.Clicked += resetlocation;
+                mybottton item = new mybottton();
+                item.Text = newItemName;
 
-            
-            //TODO change to img
-            Label image = new Label();
-            image.Text = filetype;
+                item.defaultPath = defaultlocation;
+                item.fileType = filetype;
 
-            widthCollumn += newItemName.Length*10;
-            count++;
+                if (filetype == "f")
+                {
+                    doFolderStuff(item);
+                }
+                else if (filetype == "d")
+                {
+                    doFileStuff(item);
+                }
 
-            div.Add(image);
-            div.Add(item);
-            listView.Add(div);
 
+
+                //TODO change to img
+                Label image = new Label();
+                image.Text = filetype;
+
+                widthCollumn += newItemName.Length * 10;
+                count++;
+
+                div.Add(image);
+                div.Add(item);
+                listView.Add(div);
+            }
         }
-
         double result = (widthCollumn / count)*1.1;
         listView.WidthRequest = result;
     }
@@ -79,12 +117,22 @@ public partial class MainPage : ContentPage
         Log(NewLocation);
 
         VerticalStackLayout listView = new VerticalStackLayout();
-        
+
+        Border border = new Border
+        {
+            Stroke = Color.FromArgb("#ffffbb00"),
+            Background = Color.FromArgb("#ff000000"),
+            StrokeThickness = 4,
+            Content = listView,
+        };
+
+
+
         addItems(listView, NewLocation, Directory.GetDirectories(NewLocation), "d");
         addItems(listView, NewLocation, Directory.GetFiles(NewLocation), "f");
 
-        divLists.Add(listView);
-        //String[] foldersandfiles = folders.Union(files).ToArray();
+        //divLists.Add(listView);
+        divLists.Add(border);
 
     }
 
@@ -92,6 +140,7 @@ public partial class MainPage : ContentPage
     private void ClearGroup()
     {
         Log("explorerTable.Clear");
+        divLists.Clear();
     }
 
     private void Log(object message)
@@ -106,4 +155,5 @@ public partial class MainPage : ContentPage
 
         }
     }
+
 }
