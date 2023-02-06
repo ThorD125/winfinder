@@ -11,7 +11,7 @@
                     x:Name="inputBox"/>
                 <Button 
                     Text="Search"
-                    Clicked="showListview" />   
+                    Clicked="ShowListview" />   
             </HorizontalStackLayout>
 
             <HorizontalStackLayout 

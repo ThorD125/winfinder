@@ -11,7 +11,7 @@ namespace MauiApp1;
 public partial class MainPage : ContentPage
 {
     readonly string defaultPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-    private settings settings = new settings();
+    private readonly settings settings = new();
 
     public MainPage()
 	{
@@ -19,7 +19,7 @@ public partial class MainPage : ContentPage
         inputBox.Text = defaultPath;
         LoadGroup();
     }
-    public void showListview(object sender, EventArgs args)
+    public void ShowListview(object sender, EventArgs args)
     {
         ClearGroup();
         LoadGroup();
@@ -37,69 +37,94 @@ public partial class MainPage : ContentPage
             NewColumn(result);
         }
     }
-    public void showListViewForPath(object sender, EventArgs args)
+    public void ShowListViewForPath(object sender, EventArgs args)
     {
         mybottton newsender = (mybottton)sender;
         inputBox.Text = newsender.defaultPath + newsender.Text;
         ClearGroup();
         LoadGroup();
     }
-    public void showFile(object sender, EventArgs args)
+    public void ShowFile(object sender, EventArgs args)
     {
-        Log("showListViewForPath");
+        //Log("showListViewForPath");
         mybottton newsender = (mybottton)sender;
         inputBox.Text = newsender.defaultPath + newsender.Text;
         ClearGroup();
         LoadGroup();
     }
 
-    private void doFolderStuff(mybottton item)
+    private void DoFolderStuff(mybottton item)
     {
-        item.Clicked += showListViewForPath;
+        item.Clicked += ShowListViewForPath;
     }
 
-    private void doFileStuff(mybottton item)
+    private void DoFileStuff(mybottton item)
     {
-        item.Clicked += showFile;
+        item.Clicked += ShowFile;
     }
-    private void addItems(VerticalStackLayout listView, string defaultlocation, string[] items, string filetype)
+
+    private bool IsNotHiddenFile(string newItemName)
+    {
+        return (!newItemName.StartsWith(".") || (newItemName.StartsWith(".") && settings.viewHiddenFiles))
+            && (!newItemName.StartsWith("$"))
+            ;
+    }
+    private void AddItems(VerticalStackLayout listView, string defaultlocation, string[] items, string filetype)
     {
         double widthCollumn = 0;
         double count = 0;
 
         foreach (string itemName in items)
         {
-                string newItemName = itemName.Remove(0, defaultlocation.Length);
+            string newItemName = itemName.Remove(0, defaultlocation.Length);
+            bool accesible = false;
 
+
+            try
+            {
+                Log(Directory.GetDirectories(itemName));
+                accesible = true;
+            }
+            catch { }
+            try
+            {
+                Log(Directory.GetFiles(itemName));
+                accesible = true;
+            }
+            catch { }
 
 
             if (
-                (!newItemName.StartsWith(".") || (newItemName.StartsWith(".") && settings.viewHiddenFiles)) &&
-                    (!newItemName.StartsWith("$") /*|| (newItemName.StartsWith("$") && settings.viewHiddenFiles)*/)
+                    IsNotHiddenFile(newItemName)
+                    && accesible
                     )
             {
-                HorizontalStackLayout div = new HorizontalStackLayout();
+                HorizontalStackLayout div = new();
 
-                mybottton item = new mybottton();
-                item.Text = newItemName;
+                mybottton item = new()
+                {
+                    Text = newItemName,
 
-                item.defaultPath = defaultlocation;
-                item.fileType = filetype;
+                    defaultPath = defaultlocation,
+                    fileType = filetype
+                };
 
                 if (filetype == "f")
                 {
-                    doFolderStuff(item);
+                    DoFolderStuff(item);
                 }
                 else if (filetype == "d")
                 {
-                    doFileStuff(item);
+                    DoFileStuff(item);
                 }
 
 
 
                 //TODO change to img
-                Label image = new Label();
-                image.Text = filetype;
+                Label image = new()
+                {
+                    Text = filetype
+                };
 
                 widthCollumn += newItemName.Length * 10;
                 count++;
@@ -114,11 +139,11 @@ public partial class MainPage : ContentPage
     }
     private void NewColumn(string NewLocation)
     {
-        Log(NewLocation);
+        //Log(NewLocation);
 
-        VerticalStackLayout listView = new VerticalStackLayout();
+        VerticalStackLayout listView = new();
 
-        Border border = new Border
+        Border border = new()
         {
             Stroke = Color.FromArgb("#ffffbb00"),
             Background = Color.FromArgb("#ff000000"),
@@ -128,8 +153,8 @@ public partial class MainPage : ContentPage
 
 
 
-        addItems(listView, NewLocation, Directory.GetDirectories(NewLocation), "d");
-        addItems(listView, NewLocation, Directory.GetFiles(NewLocation), "f");
+        AddItems(listView, NewLocation, Directory.GetDirectories(NewLocation), "d");
+        AddItems(listView, NewLocation, Directory.GetFiles(NewLocation), "f");
 
         //divLists.Add(listView);
         divLists.Add(border);
@@ -139,7 +164,7 @@ public partial class MainPage : ContentPage
 
     private void ClearGroup()
     {
-        Log("explorerTable.Clear");
+        //Log("explorerTable.Clear");
         divLists.Clear();
     }
 

@@ -9,7 +9,8 @@ namespace MauiApp1
     public class settings
     {
 
-        public bool viewHiddenFiles = true;
+        public bool viewHiddenFiles = false;
+        public bool sudo = false;
 
     }
 }
