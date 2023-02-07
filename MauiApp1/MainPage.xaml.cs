@@ -149,6 +149,7 @@ public partial class MainPage : ContentPage
             Background = Color.FromArgb("#ff000000"),
             StrokeThickness = 4,
             Content = listView,
+            MinimumWidthRequest = 200,
         };
 
 
